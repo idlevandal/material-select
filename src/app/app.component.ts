@@ -10,9 +10,16 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class AppComponent {
   public selectedValue: string;
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+
+  public myControl = new FormControl();
+  public options: string[] = ['One', 'Two', 'Three'];
+  public filteredOptions: Observable<string[]>;
+
+  public selectOptions = [
+    {name: 'Angular', value: 'angular'},
+    {name: 'React', value: 'react'},
+    {name: 'Vue', value: 'vue'},
+  ]
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(

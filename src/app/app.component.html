@@ -1,27 +1,29 @@
 <div class="container mt-5">
-  <mat-form-field color='accent'>
-    <mat-label>Test Select</mat-label>
-    <mat-select [(value)]='selectedValue' disableOptionCentering disableRipple panelClass="myPanelClass">
-      <mat-option>None</mat-option>
-      <mat-option value='angular'>Angular</mat-option>
-      <mat-option value='react'>React</mat-option>
-      <mat-option value='vue'>Vue</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="d-inline-block w-50">
+    <mat-form-field color='primary'>
+      <mat-label>Test Select</mat-label>
+      <mat-select [(value)]='selectedValue' disableOptionCentering disableRipple panelClass="myPanelClass">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor='let option of selectOptions' [value]='option.value'>{{option.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
-  <h2 class='mt-5 text-uppercase'>{{selectedValue}}</h2>
+  <div class='d-inline-block ml-5 pl-5 text-uppercase'>{{selectedValue}}</div>
 
-  <mat-form-field class="example-full-width">
-    <input type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-           [formControl]="myControl"
-           [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+  <div class='mt-5'>
+    <mat-form-field class="example-full-width">
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Number"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
 </div>
